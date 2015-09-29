@@ -1,4 +1,4 @@
-== Field definition
+=== Field definition overview
 Defines a field or column which should be processed. The goal is to build a description for
 file imports where all the checks could be created out of the description.
 
@@ -77,7 +77,7 @@ mandatory ::
 	Defines if this column is mandatory or not.
 
 severity ::
-	Defines what to do when an error has occured.
+	Defines what to do when an error has occurred.
 	abort_file :::
 		Abort the whole file. No record from this file will be imported.
 	abort_scope :::
