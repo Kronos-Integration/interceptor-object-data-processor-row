@@ -9,6 +9,7 @@ const moment = require('moment');
 const checkDateFactory = require('../lib/recordCheck/data-check-date').createChecks;
 
 
+
 const fieldDefinition = {
 	"fieldType": {
 		"type": "date",
@@ -120,7 +121,7 @@ const toBeChecked = [
 	["2011-12-15 15:13:01 -03:00", "15.12.2011 19:13:01"],
 	["2011-12-15 15:13:01 Z", "15.12.2011 16:13:01"],
 	["2010-08-20 11:48:14 +01:00", "20.08.2010 12:48:14"],
-	["2010-08-20 11:48:14+01:00", "20.08.2010 12:48:14"]
+	["2010-08-20 11:48:14+01:00", "20.08.2010 12:48:14 +01:00"]
 ];
 
 
@@ -144,12 +145,14 @@ describe("data-check-date", function () {
 			let cont = {
 				"birthDate": elem[0]
 			};
-			const expected = elem[1];
+			//const expected = elem[1];
+			const expected = moment(elem[1], "DD.MM.YYYY HH:mm:ss").utcOffset(60).format("DD.MM.YYYY HH:mm:ss Z");
 
 			// ignore min and max date checks here
 			dateChecks[0](cont);
 
-			const actual = moment(cont.birthDate).format("DD.MM.YYYY HH:mm:ss");
+			const actual = moment(cont.birthDate).utcOffset(1).format("DD.MM.YYYY HH:mm:ss Z");
+
 			actual.should.equal(expected, "Error in line " + i + " For value '" + elem[0] + "'");
 
 		});
