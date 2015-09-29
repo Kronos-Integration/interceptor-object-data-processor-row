@@ -151,7 +151,7 @@ describe("data-check-date", function () {
 			// ignore min and max date checks here
 			dateChecks[0](cont);
 
-			const actual = moment(cont.birthDate).utcOffset(1).format("DD.MM.YYYY HH:mm:ss");
+			const actual = moment(cont.birthDate).format("DD.MM.YYYY HH:mm:ss");
 
 			actual.should.equal(expected, "Error in line " + i + " For value '" + elem[0] + "'");
 
