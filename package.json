@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "moment": "2.10.6",
-    "z-schema": "3.15.2"
+    "z-schema": "3.16.1"
   },
   "devDependencies": {
     "chai": "3.4.1",
