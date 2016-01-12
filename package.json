@@ -21,7 +21,7 @@
     "debug": false
   },
   "dependencies": {
-    "moment": "2.11.0",
+    "moment": "2.11.1",
     "z-schema": "3.16.1"
   },
   "devDependencies": {
