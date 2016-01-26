@@ -21,12 +21,14 @@ const stepMock = {
 };
 
 const checkProperties = {
-  "fieldType": {
-    "type": "boolean",
-  },
-  "defaultValue": "false",
-  "mandatory": true,
-  "severity": "abort_file"
+  "namus": {
+    "fieldType": {
+      "type": "boolean",
+    },
+    "defaultValue": "false",
+    "mandatory": true,
+    "severity": "abort_file"
+  }
 };
 
 describe('Interceptor test', function () {
