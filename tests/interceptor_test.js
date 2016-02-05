@@ -21,13 +21,15 @@ const stepMock = {
 };
 
 const checkProperties = {
-  "namus": {
-    "fieldType": {
-      "type": "boolean",
-    },
-    "defaultValue": "false",
-    "mandatory": true,
-    "severity": "abort_file"
+  "config": {
+    "namus": {
+      "fieldType": {
+        "type": "boolean",
+      },
+      "defaultValue": "false",
+      "mandatory": true,
+      "severity": "abort_file"
+    }
   }
 };
 
