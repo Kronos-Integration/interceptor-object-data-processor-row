@@ -28,8 +28,8 @@
     "jsdoc": "3.4.0",
     "kronos-test-interceptor": "^2.0.2",
     "mocha": "2.4.5",
-    "underscore": "^1.8.3",
-    "semantic-release": "6.2.0"
+    "semantic-release": "6.2.1",
+    "underscore": "^1.8.3"
   },
   "contributors": [
     {
