@@ -26,7 +26,7 @@
     "chai": "3.5.0",
     "istanbul": "0.4.3",
     "jsdoc": "3.4.0",
-    "kronos-test-interceptor": "^2.0.3",
+    "kronos-test-interceptor": "^2.0.4",
     "mocha": "2.4.5",
     "semantic-release": "6.2.1",
     "underscore": "^1.8.3",
