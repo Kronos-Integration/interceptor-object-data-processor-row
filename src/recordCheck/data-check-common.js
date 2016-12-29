@@ -2,18 +2,16 @@
 /* jslint node: true, esnext: true */
 'use strict';
 
-const propertyHelper = require('../util/property-helper');
+import { getFieldType, getSeverity } from '../util/property-helper';
 
-
-module.exports = {
 	/**
 	 * Creates the checks which are common to each file type
 	 * @param fieldDefinition The field_definition for this field.
 	 * @param fieldName The name of the current field
 	 */
-	createChecks: function (fieldDefinition, fieldName) {
-		const severity = propertyHelper.getSeverity(fieldDefinition, undefined, 'mandatory');
-		const isMandatoy = propertyHelper.getProperty(fieldDefinition, undefined, 'mandatory');
+	function createChecks(fieldDefinition, fieldName) {
+		const severity = getSeverity(fieldDefinition, undefined, 'mandatory');
+		const isMandatoy = getProperty(fieldDefinition, undefined, 'mandatory');
 
 		// const severity = fieldDefinition.severity;
 		// const isMandatoy = fieldDefinition.mandatory;
@@ -39,4 +37,7 @@ module.exports = {
 
 		}
 	}
+
+export {
+	createChecks
 };

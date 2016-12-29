@@ -1,18 +1,16 @@
-/*global describe, it*/
 /* jslint node: true, esnext: true */
 'use strict';
-const propertyHelper = require('../util/property-helper');
-const functionHelper = require('../util/function-helper');
 
-module.exports = {
+import { getParserCheck } from '../util/function-helper';
+import { getFieldType, getSeverity } from '../util/property-helper';
 
   /**
    * Creates the field splitter for a field, if this field is a multi field
    * @param fieldDefinition The field_definition for this field.
    * @param fieldName The name of the current field
    */
-  createChecks: function (fieldDefinition, fieldName) {
-    const fieldType = propertyHelper.getFieldType(fieldDefinition);
+  function createChecks(fieldDefinition, fieldName) {
+    const fieldType = getFieldType(fieldDefinition);
 
     let checks;
     if (fieldType === 'string' || fieldType === 'email') {
@@ -34,7 +32,7 @@ module.exports = {
     }
     return checks;
   }
-};
+
 
 /**
  * Checks if a given string looks like a valid email.
@@ -43,17 +41,17 @@ module.exports = {
  * @return The check
  */
 function createCheckEmail(fieldDefinition, fieldName) {
-  const severity = propertyHelper.getSeverity(fieldDefinition);
+  const severity = getSeverity(fieldDefinition);
 
   // return getIteratorFunction: function (fieldName, defaultValue, checkProperties, checkFunction, getErrorFunction,
   // 	getValueIfErrorFunction, getValueIfOkFunction) {
 
-  let errorInfo = {
+  const errorInfo = {
     severity: severity,
     errorCode: 'NOT_EMAIL'
   };
 
-  return functionHelper.getParserCheck(errorInfo, getEmailIfValid, fieldName, undefined);
+  return getParserCheck(errorInfo, getEmailIfValid, fieldName, undefined);
 
 }
 
@@ -108,7 +106,6 @@ function createChecksString(fieldDefinition, fieldName) {
   if (regExStr) {
     regEx = new RegExp(regExStr);
   }
-
 
   const minLengthSeverity = propertyHelper.getSeverity(fieldDefinition, 'minLength');
   const maxLengthSeverity = propertyHelper.getSeverity(fieldDefinition, 'maxLength');
@@ -167,7 +164,7 @@ function createChecksString(fieldDefinition, fieldName) {
       // If the value is defined, we need to check it
       if (valueToCheck !== undefined && valueToCheck !== null) {
 
-        let errors = [];
+        const errors = [];
 
         if (Array.isArray(valueToCheck)) {
           valueToCheck.forEach(function (item, idx, arr) {
@@ -216,7 +213,7 @@ function createChecksString(fieldDefinition, fieldName) {
       // If the value is defined, we need to check it
       if (valueToCheck !== undefined && valueToCheck !== null) {
 
-        let errors = [];
+        const errors = [];
 
         if (Array.isArray(valueToCheck)) {
           valueToCheck.forEach(function (item, idx, arr) {
@@ -271,7 +268,7 @@ function createChecksString(fieldDefinition, fieldName) {
       // If the value is defined, we need to check it
       if (valueToCheck !== undefined && valueToCheck !== null) {
 
-        let errors = [];
+        const errors = [];
 
         if (Array.isArray(valueToCheck)) {
           valueToCheck.forEach(function (item, idx, arr) {
@@ -336,3 +333,9 @@ function getEmailIfValid(emailToVerify) {
     }
   }
 }
+
+
+export {
+	createChecks
+};
+

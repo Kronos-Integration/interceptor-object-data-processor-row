@@ -1,8 +1,7 @@
-/*global describe, it*/
 /* jslint node: true, esnext: true */
 'use strict';
 
-module.exports = {
+
 	/**
 	 * Some of the values may be directly the value or could be an object with different
 	 * addidtional properties. So to get the expected value it must be checked if the
@@ -14,7 +13,7 @@ module.exports = {
 	 *
 	 * Only one of the property names should be given
 	 */
-	getProperty: function (fieldDefinition, fieldTypePropertyName, propertyName) {
+function getProperty(fieldDefinition, fieldTypePropertyName, propertyName) {
 		if (fieldTypePropertyName) {
 			if (fieldDefinition.fieldType.hasOwnProperty(fieldTypePropertyName)) {
 				if (typeof fieldDefinition.fieldType[fieldTypePropertyName] === 'object') {
@@ -35,8 +34,7 @@ module.exports = {
 			}
 		}
 
-	},
-
+	}
 
 	/**
 	 * Returns the severity for a check property. The severity may be defined globaly
@@ -47,7 +45,7 @@ module.exports = {
 	 *
 	 * Only one of the property names should be given
 	 */
-	getSeverity: function (fieldDefinition, fieldTypePropertyName, propertyName) {
+function getSeverity(fieldDefinition, fieldTypePropertyName, propertyName) {
 		let severity = fieldDefinition.severity;
 
 		if (typeof fieldDefinition.fieldType === 'object') {
@@ -84,12 +82,17 @@ module.exports = {
 	 * for the complete field, but also may be defined on a per check basis
 	 * @param fieldDefinition The field_definition
 	 */
-	getFieldType: function (fieldDefinition) {
+function getFieldType(fieldDefinition) {
 		let type = fieldDefinition.fieldType;
 		if (typeof type === 'object') {
 			type = fieldDefinition.fieldType.type;
 		}
 		return type;
-	}
+}
 
+export {
+	getProperty
+	getSeverity
+	getFieldType
 };
+

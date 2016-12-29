@@ -14,12 +14,11 @@ const schema = require('../schema/row_processor_definition.json');
 validator.setRemoteReference('field_definition#', require('../schema/field_definition.json'));
 
 
-const checkBoolean = require('./recordCheck/data-check-boolean.js');
-const checkCommon = require('./recordCheck/data-check-common.js');
-const checkDate = require('./recordCheck/data-check-date.js');
-const checkNumber = require('./recordCheck/data-check-number.js');
-const checkStringEmail = require('./recordCheck/data-check-string-email.js');
-
+import { createChecks as checkBoolean } from './recordCheck/data-check-boolean.js';
+import { createChecks as checkCommon } from './recordCheck/data-check-common.js';
+import { createChecks as checkDate } from './recordCheck/data-check-date.js';
+import { createChecks as checkNumber } from './recordCheck/data-check-number.js';
+import { createChecks as checkStringEmail } from './recordCheck/data-check-string-email.js';
 
 import {
 	createChecks as fieldSplitter

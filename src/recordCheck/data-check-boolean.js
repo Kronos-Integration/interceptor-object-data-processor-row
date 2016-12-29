@@ -1,28 +1,24 @@
-/*global describe, it*/
 /* jslint node: true, esnext: true */
 'use strict';
 
-const functionHelper = require('../util/function-helper');
-const propertyHelper = require('../util/property-helper');
+import { getParserCheck } from '../util/function-helper';
+import { getFieldType, getSeverity } from '../util/property-helper';
 
-
-
-module.exports = {
 
 	/**
 	 * Creates the checks for checking boolean values
 	 * @param fieldDefinition The field_definition for this field.
 	 * @param fieldName The name of the current field
 	 */
-	createChecks: function (fieldDefinition, fieldName) {
-		const fieldType = propertyHelper.getFieldType(fieldDefinition);
+	function createChecks(fieldDefinition, fieldName) {
+		const fieldType = getFieldType(fieldDefinition);
 
 		if (fieldType === 'boolean') {
 			// it is a boolean field. Create the cehcks
-			return createChecks(fieldDefinition, fieldName);
+			return _createChecks(fieldDefinition, fieldName);
 		}
 	}
-};
+
 
 
 /**
@@ -34,8 +30,8 @@ module.exports = {
  * @param fieldDefinition The field_definition for this field.
  * @param fieldName The name of the current field
  */
-function createChecks(fieldDefinition, fieldName) {
-	const severity = propertyHelper.getSeverity(fieldDefinition);
+function _createChecks(fieldDefinition, fieldName) {
+	const severity = getSeverity(fieldDefinition);
 
 	let defaultValue;
 	if (fieldDefinition.defaultValue !== undefined) {
@@ -50,12 +46,12 @@ function createChecks(fieldDefinition, fieldName) {
 		}
 	}
 
-	let errorInfo = {
+	const errorInfo = {
 		severity: severity,
 		errorCode: 'NOT_BOOLEAN'
 	};
 
-	return functionHelper.getParserCheck(errorInfo, stringToBoolean, fieldName, defaultValue);
+	return getParserCheck(errorInfo, stringToBoolean, fieldName, defaultValue);
 }
 
 
@@ -80,8 +76,8 @@ function stringToBoolean(string) {
 			return true;
 		}
 	} else if (typeof string === 'string') {
-		var trueValues = ['Y', 'J', 'T', 'JA', 'TRUE', 'YES', '1', 'S', 'SI'];
-		var falseValues = ['N', 'F', 'NEIN', 'FALSE', 'NO', '0'];
+		const trueValues = ['Y', 'J', 'T', 'JA', 'TRUE', 'YES', '1', 'S', 'SI'];
+		const falseValues = ['N', 'F', 'NEIN', 'FALSE', 'NO', '0'];
 		if (isElementInList(string, trueValues)) {
 			return true;
 		} else if (isElementInList(string, falseValues)) {
@@ -101,9 +97,13 @@ function stringToBoolean(string) {
  */
 function isElementInList(str, list) {
 	if (typeof str === 'string' && typeof list == 'object' && list.indexOf) {
-		var strUpper = str.toUpperCase();
+		const strUpper = str.toUpperCase();
 		return list.indexOf(strUpper) !== -1;
 	} else {
 		return false;
 	}
 }
+
+export {
+	createChecks
+};

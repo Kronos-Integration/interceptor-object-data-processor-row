@@ -1,17 +1,15 @@
-/*global describe, it*/
 /* jslint node: true, esnext: true */
 'use strict';
-const propertyHelper = require('../util/property-helper');
 
-module.exports = {
+import { getFieldType, getSeverity } from '../util/property-helper';
 
   /**
    * Creates the field splitter for a field, if this field is a multi field
    * @param fieldDefinition The field_definition for this field.
    * @param fieldName The name of the current field
    */
-  createChecks: function (fieldDefinition, fieldName) {
-    const fieldType = propertyHelper.getFieldType(fieldDefinition);
+function createChecks(fieldDefinition, fieldName) {
+    const fieldType = getFieldType(fieldDefinition);
 
     let checks;
     if (fieldType === 'number' || fieldType === 'integer' || fieldType === 'float') {
@@ -20,7 +18,7 @@ module.exports = {
 
     return checks;
   }
-};
+
 
 
 /**
@@ -34,12 +32,12 @@ module.exports = {
 function createChecks(fieldDefinition, fieldName, numberType) {
   let checks = [];
 
-  const decimalSeparator = propertyHelper.getProperty(fieldDefinition, 'decimalSeparator');
-  const min = propertyHelper.getProperty(fieldDefinition, 'min');
-  const max = propertyHelper.getProperty(fieldDefinition, 'max');
+  const decimalSeparator = getProperty(fieldDefinition, 'decimalSeparator');
+  const min = getProperty(fieldDefinition, 'min');
+  const max = getProperty(fieldDefinition, 'max');
 
-  const minSeverity = propertyHelper.getSeverity(fieldDefinition, 'min');
-  const maxSeverity = propertyHelper.getSeverity(fieldDefinition, 'max');
+  const minSeverity = getSeverity(fieldDefinition, 'min');
+  const maxSeverity = getSeverity(fieldDefinition, 'max');
   const severity = fieldDefinition.severity;
 
   const defaultValue = parseNumberString(fieldDefinition.defaultValue, numberType, decimalSeparator);
@@ -133,7 +131,7 @@ function createChecks(fieldDefinition, fieldName, numberType) {
       if (valueToCheck !== undefined && valueToCheck !== null) {
         // do the work
 
-        let errors = [];
+        const errors = [];
 
         if (Array.isArray(valueToCheck)) {
           valueToCheck.forEach(function (item, idx, arr) {
@@ -197,8 +195,7 @@ function createChecks(fieldDefinition, fieldName, numberType) {
       // If the value is defined, we need to check it
       if (valueToCheck !== undefined && valueToCheck !== null) {
 
-
-        let errors = [];
+        const errors = [];
 
         if (Array.isArray(valueToCheck)) {
           valueToCheck.forEach(function (item, idx, arr) {
@@ -307,3 +304,9 @@ function parseNumberString(numberString, type, decimalSeparator) {
   }
   return result;
 }
+
+
+export {
+	createChecks
+};
+

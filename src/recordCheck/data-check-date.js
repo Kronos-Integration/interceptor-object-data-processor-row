@@ -1,26 +1,23 @@
-/*global describe, it*/
 /* jslint node: true, esnext: true */
 'use strict';
 const moment = require('moment');
 
-const propertyHelper = require('../util/property-helper');
-const functionHelper = require('../util/function-helper');
+import { getParserCheck } from '../util/function-helper';
+import { getFieldType, getSeverity } from '../util/property-helper';
 
-module.exports = {
   /**
    * Creates the date checks for a date field
    * @param fieldDefinition The field_definition schema
    * @param fieldName The name of the current field
    */
-  createChecks: function (fieldDefinition, fieldName) {
-    const fieldType = propertyHelper.getFieldType(fieldDefinition);
+  function createChecks(fieldDefinition, fieldName) {
+    const fieldType = getFieldType(fieldDefinition);
 
     if (fieldType === 'date') {
       // This field is a date field. Create the checks
       return createDateChecks(fieldDefinition, fieldName);
     }
   }
-};
 
 
 /**
@@ -56,7 +53,7 @@ function createDateChecks(fieldDefinition, fieldName) {
   // check min date
   // -----------------------
   let minDate;
-  const minDateStr = propertyHelper.getProperty(fieldDefinition, 'minDate');
+  const minDateStr = getProperty(fieldDefinition, 'minDate');
   if (minDateStr !== undefined) {
     minDate = parseDateString(minDateStr);
     // Check that the given minDate is a valid date
@@ -74,7 +71,7 @@ function createDateChecks(fieldDefinition, fieldName) {
   // check max date
   // -----------------------
   let maxDate;
-  const maxDateStr = propertyHelper.getProperty(fieldDefinition, 'maxDate');
+  const maxDateStr = getProperty(fieldDefinition, 'maxDate');
   if (maxDateStr !== undefined) {
     maxDate = parseDateString(maxDateStr);
     // Check that the given minDate is a valid date
@@ -88,8 +85,8 @@ function createDateChecks(fieldDefinition, fieldName) {
     }
   }
 
-  const minDateSeverity = propertyHelper.getSeverity(fieldDefinition, 'minDate');
-  const maxDateSeverity = propertyHelper.getSeverity(fieldDefinition, 'maxDate');
+  const minDateSeverity = getSeverity(fieldDefinition, 'minDate');
+  const maxDateSeverity = getSeverity(fieldDefinition, 'maxDate');
 
 
   // -----------------------------------------------------------------------
@@ -109,7 +106,7 @@ function createDateChecks(fieldDefinition, fieldName) {
     errorCode: 'NOT_DATE'
   };
 
-  checks.push(functionHelper.getParserCheck(errorInfo, parseDateString, fieldName, defaultValue));
+  checks.push(getParserCheck(errorInfo, parseDateString, fieldName, defaultValue));
 
   // -----------------------------------------------------------------------
   // Create MIN_DATE Check
@@ -196,8 +193,7 @@ function createDateChecks(fieldDefinition, fieldName) {
       // If the value is defined, we need to check it
       if (valueToCheck !== undefined && valueToCheck !== null) {
 
-
-        let errors = [];
+        const errors = [];
 
         if (Array.isArray(valueToCheck)) {
           valueToCheck.forEach(function (item, idx, arr) {
@@ -361,3 +357,9 @@ function parseDateString(dateString) {
     }
   }
 }
+
+
+export {
+	createChecks
+};
+
