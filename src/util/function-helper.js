@@ -1,11 +1,7 @@
-/*global describe, it*/
 /* jslint node: true, esnext: true */
 'use strict';
 
-module.exports = {
-
-
-	getParserCheck: function (errorInfo, parseFunction, fieldName, defaultValue) {
+function getParserCheck(errorInfo, parseFunction, fieldName, defaultValue) {
 		return function (content) {
 			// get the value from the content hash
 			const valueToCheck = content[fieldName];
@@ -74,4 +70,7 @@ module.exports = {
 			}
 		};
 	}
+
+export {
+	getParserCheck
 };

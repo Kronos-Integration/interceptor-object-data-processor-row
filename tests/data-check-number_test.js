@@ -4,7 +4,7 @@
 const should = require('chai').should();
 var _ = require('underscore');
 
-const createNumberCheckFactory = require('../lib/recordCheck/data-check-number').createChecks;
+const createNumberCheckFactory = require('../src/recordCheck/data-check-number').createChecks;
 
 // The cont to be checked by the file check
 var content = {

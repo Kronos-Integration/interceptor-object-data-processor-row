@@ -8,7 +8,7 @@ const expect = chai.expect;
 const should = chai.should();
 const _ = require('underscore');
 
-const checkCommonFactory = require('../lib/recordCheck/data-check-common').createChecks;
+const checkCommonFactory = require('../src/recordCheck/data-check-common').createChecks;
 
 
 const fieldDefinition = {

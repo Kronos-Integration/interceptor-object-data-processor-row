@@ -1,22 +1,19 @@
 /* jslint node: true, esnext: true */
 'use strict';
 
-var TMP_DEVIDER = '<--DIVIDER-->';
+const TMP_DEVIDER = '<--DIVIDER-->';
 
-module.exports = {
-	/**
-	 * Creates the field splitter for a field, if this field is a multi field
-	 * @param fieldDefinition The field_definition schema
-	 * @param fieldName The name of the current field
-	 */
-	createChecks: function (fieldDefinition, fieldName) {
-		if (fieldDefinition.hasOwnProperty('multiField')) {
-			// if it is not a multifield no check is to be created
-			return createSplitterForField(fieldDefinition.multiField, fieldName);
-		}
+/**
+ * Creates the field splitter for a field, if this field is a multi field
+ * @param fieldDefinition The field_definition schema
+ * @param fieldName The name of the current field
+ */
+function createChecks(fieldDefinition, fieldName) {
+	if (fieldDefinition.hasOwnProperty('multiField')) {
+		// if it is not a multifield no check is to be created
+		return createSplitterForField(fieldDefinition.multiField, fieldName);
 	}
-};
-
+}
 
 /**
  * Create the field spliter for a given field definition
@@ -61,7 +58,6 @@ function createSplitterForField(multiFieldDefinitionPart, fieldName) {
 		removeEmpty = multiFieldDefinitionPart.removeEmpty;
 	}
 
-
 	return function (content) {
 		if (content.hasOwnProperty(fieldName)) {
 			// the field exists in the content record
@@ -92,7 +88,6 @@ function createSplitterForField(multiFieldDefinitionPart, fieldName) {
 						values[i] = values[i].replace(re, delimiter);
 					}
 				}
-
 
 				// ------------------------------------------------
 				// remove the leading and trailing whiteSpaces
@@ -144,3 +139,7 @@ function createSplitterForField(multiFieldDefinitionPart, fieldName) {
 		return null;
 	};
 }
+
+export {
+	createChecks
+};

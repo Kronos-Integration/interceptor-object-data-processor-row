@@ -14,12 +14,31 @@ const schema = require('../schema/row_processor_definition.json');
 validator.setRemoteReference('field_definition#', require('../schema/field_definition.json'));
 
 
-const fieldSplitter = require('./converter/data-field-splitter.js');
-const checkBoolean = require('./recordCheck/data-check-boolean.js');
-const checkCommon = require('./recordCheck/data-check-common.js');
-const checkDate = require('./recordCheck/data-check-date.js');
-const checkNumber = require('./recordCheck/data-check-number.js');
-const checkStringEmail = require('./recordCheck/data-check-string-email.js');
+import {
+	createChecks as checkBoolean
+}
+from './recordCheck/data-check-boolean.js';
+import {
+	createChecks as checkCommon
+}
+from './recordCheck/data-check-common.js';
+import {
+	createChecks as checkDate
+}
+from './recordCheck/data-check-date.js';
+import {
+	createChecks as checkNumber
+}
+from './recordCheck/data-check-number.js';
+import {
+	createChecks as checkStringEmail
+}
+from './recordCheck/data-check-string-email.js';
+
+import {
+	createChecks as fieldSplitter
+}
+from './converter/data-field-splitter';
 
 class DataProcessorRow extends stream.Transform {
 
@@ -47,22 +66,21 @@ class DataProcessorRow extends stream.Transform {
 				// There where validation errors
 				throw (validationErrors);
 			}
-
 		}
 
 		// Stores all the checks to be executed
 		this.checks = [];
 
-		for (let fieldName in opts) {
+		for (const fieldName in opts) {
 			if (opts.hasOwnProperty(fieldName)) {
-				let fieldDefinition = opts[fieldName];
+				const fieldDefinition = opts[fieldName];
 
-				this.addChecks(fieldSplitter.createChecks(fieldDefinition, fieldName));
-				this.addChecks(checkBoolean.createChecks(fieldDefinition, fieldName));
-				this.addChecks(checkCommon.createChecks(fieldDefinition, fieldName));
-				this.addChecks(checkDate.createChecks(fieldDefinition, fieldName));
-				this.addChecks(checkNumber.createChecks(fieldDefinition, fieldName));
-				this.addChecks(checkStringEmail.createChecks(fieldDefinition, fieldName));
+				this.addChecks(fieldSplitter(fieldDefinition, fieldName));
+				this.addChecks(checkBoolean(fieldDefinition, fieldName));
+				this.addChecks(checkCommon(fieldDefinition, fieldName));
+				this.addChecks(checkDate(fieldDefinition, fieldName));
+				this.addChecks(checkNumber(fieldDefinition, fieldName));
+				this.addChecks(checkStringEmail(fieldDefinition, fieldName));
 			}
 		}
 	}
@@ -93,10 +111,10 @@ class DataProcessorRow extends stream.Transform {
 				}
 			}
 
-			let objData = data.data;
+			const objData = data.data;
 
 			for (let i = 0; i < this.checks.length; i++) {
-				let errors = this.checks[i](objData);
+				const errors = this.checks[i](objData);
 
 				if (errors) {
 					if (!data.errors) {
@@ -111,14 +129,12 @@ class DataProcessorRow extends stream.Transform {
 					} else {
 						data.errors.push(errors);
 					}
-
 				}
 			}
 
 			this.push(data);
 			cb();
 		} // end transform
-
 }
 
 /**
@@ -128,22 +144,23 @@ class DataProcessorRow extends stream.Transform {
  * @return infoObject An object containing the boolean value and the severity
  */
 function getCheckInfo(checkProperty, fieldName) {
-	let severity;
-	let value;
 	if (typeof checkProperty[fieldName] === 'object') {
-		severity = checkProperty[fieldName].severity;
-		value = checkProperty[fieldName].val;
+		return {
+			severity: checkProperty[fieldName].severity,
+			val: checkProperty[fieldName].val
+		};
 	} else {
-		severity = checkProperty.severity;
-		value = checkProperty[fieldName];
+		return {
+			severity: checkProperty.severity,
+			val: checkProperty[fieldName]
+		};
 	}
-
-	return {
-		val: value,
-		severity: severity
-	};
 }
 
-module.exports = function (opts, validate) {
+function DataProcessorRowFactory(opts, validate) {
 	return new DataProcessorRow(opts, validate);
+}
+
+export {
+	DataProcessorRowFactory
 };

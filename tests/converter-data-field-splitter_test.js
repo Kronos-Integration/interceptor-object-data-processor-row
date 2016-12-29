@@ -5,23 +5,22 @@
 const should = require('chai').should();
 const _ = require('underscore');
 
-const fieldSplitterFactory = require('../lib/converter/data-field-splitter').createChecks;
-
+const fieldSplitterFactory = require('../dist/module').createChecks;
 
 const checkProperty = {
-	"fieldType": {
-		"type": "string",
-		"fieldCase": "upper",
-		"minLength": {
-			"val": 10,
-			"severity": "abort_file"
+	fieldType: {
+		type: "string",
+		fieldCase: "upper",
+		minLength: {
+			val: 10,
+			severity: "abort_file"
 		},
-		"maxLength": 20,
+		maxLength: 20,
 	},
-	"defaultValue": "my default",
-	"mandatory": true,
-	"severity": "abort_file",
-	"multiField": {
+	defaultValue: "my default",
+	mandatory: true,
+	severity: "abort_file",
+	multiField: {
 		"delimiter": ",",
 		"escapeChar": "\\",
 		"sortFields": true,

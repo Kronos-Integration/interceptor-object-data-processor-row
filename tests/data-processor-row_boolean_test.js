@@ -10,7 +10,7 @@ const should = chai.should();
 var _ = require('underscore');
 const mockReadStream = require('kronos-test-interceptor').mockReadStreamFactory;
 
-const dataProcessor = require('../lib/data-processor-row.js');
+const dataProcessor = require('../dist/module').DataProcessorRowFactory;
 
 
 describe("data-processor-row: boolean", function () {
