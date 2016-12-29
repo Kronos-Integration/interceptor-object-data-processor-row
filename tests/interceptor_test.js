@@ -1,7 +1,7 @@
 /* global describe, it, xit */
 /* jslint node: true, esnext: true */
 
-"use strict";
+'use strict';
 
 /*
  * Just test if the message will be passed through the interceptor
@@ -14,21 +14,20 @@ const chai = require('chai'),
   InterceptorUnderTest = require('../dist/module').RowProcessorInterceptor,
   MockReceiveInterceptor = require('kronos-test-interceptor').MockReceiveInterceptor;
 
-
 const stepMock = {
-  name: "dummy step name",
-  type: "dummy step type"
+  name: 'dummy step name',
+  type: 'dummy step type'
 };
 
 const checkProperties = {
   config: {
     namus: {
       fieldType: {
-        type: "boolean",
+        type: 'boolean',
       },
-      defaultValue: "false",
+      defaultValue: 'false',
       mandatory: true,
-      severity: "abort_file"
+      severity: 'abort_file'
     }
   }
 };
@@ -38,7 +37,7 @@ describe('Interceptor test', function () {
   it('Create', function () {
     const endpoint = {
       owner: stepMock,
-      name: "gumboIn"
+      name: 'gumboIn'
     };
     const messageHandler = new InterceptorUnderTest(checkProperties, endpoint);
     assert.ok(messageHandler);
@@ -47,11 +46,11 @@ describe('Interceptor test', function () {
   it('Send message', function (done) {
     const endpoint = {
       owner: stepMock,
-      name: "gumboIn"
+      name: 'gumboIn'
     };
 
     const sendMessage = {
-      info: "first message"
+      info: 'first message'
     };
 
     const messageHandler = new InterceptorUnderTest(checkProperties, endpoint);
@@ -60,7 +59,7 @@ describe('Interceptor test', function () {
       assert.ok(request);
 
       assert.deepEqual(request, {
-        info: "first message"
+        info: 'first message'
       });
       done();
     });
@@ -68,7 +67,5 @@ describe('Interceptor test', function () {
     messageHandler.connected = mockReceive;
 
     messageHandler.receive(sendMessage);
-
   });
-
 });

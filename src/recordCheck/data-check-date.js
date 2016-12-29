@@ -2,23 +2,28 @@
 'use strict';
 const moment = require('moment');
 
-import { getParserCheck } from '../util/function-helper';
-import { getFieldType, getSeverity } from '../util/property-helper';
+import {
+  getParserCheck
+}
+from '../util/function-helper';
+import {
+  getFieldType, getSeverity, getProperty
+}
+from '../util/property-helper';
 
-  /**
-   * Creates the date checks for a date field
-   * @param fieldDefinition The field_definition schema
-   * @param fieldName The name of the current field
-   */
-  function createChecks(fieldDefinition, fieldName) {
-    const fieldType = getFieldType(fieldDefinition);
+/**
+ * Creates the date checks for a date field
+ * @param fieldDefinition The field_definition schema
+ * @param fieldName The name of the current field
+ */
+function createChecks(fieldDefinition, fieldName) {
+  const fieldType = getFieldType(fieldDefinition);
 
-    if (fieldType === 'date') {
-      // This field is a date field. Create the checks
-      return createDateChecks(fieldDefinition, fieldName);
-    }
+  if (fieldType === 'date') {
+    // This field is a date field. Create the checks
+    return createDateChecks(fieldDefinition, fieldName);
   }
-
+}
 
 /**
  * Create a function which
@@ -32,7 +37,7 @@ import { getFieldType, getSeverity } from '../util/property-helper';
  * @return function A function which will check a given content hash.
  */
 function createDateChecks(fieldDefinition, fieldName) {
-  let checks = [];
+  const checks = [];
 
   // -----------------------
   // check default value
@@ -101,7 +106,7 @@ function createDateChecks(fieldDefinition, fieldName) {
    * *************************************************************************
    */
 
-  let errorInfo = {
+  const errorInfo = {
     severity: fieldDefinition.severity,
     errorCode: 'NOT_DATE'
   };
@@ -168,8 +173,6 @@ function createDateChecks(fieldDefinition, fieldName) {
         } else if (errors.length > 0) {
           return errors;
         }
-
-
       }
     });
   }
@@ -245,8 +248,6 @@ function createDateChecks(fieldDefinition, fieldName) {
 
   return checks;
 }
-
-
 
 function parseDateString(dateString) {
   if (dateString) {
@@ -358,8 +359,6 @@ function parseDateString(dateString) {
   }
 }
 
-
 export {
-	createChecks
+  createChecks
 };
-

@@ -1,38 +1,43 @@
 /* jslint node: true, esnext: true */
 'use strict';
 
-import { getParserCheck } from '../util/function-helper';
-import { getFieldType, getSeverity } from '../util/property-helper';
+import {
+  getParserCheck
+}
+from '../util/function-helper';
+import {
+  getFieldType, getSeverity, getProperty
+}
+from '../util/property-helper';
 
-  /**
-   * Creates the field splitter for a field, if this field is a multi field
-   * @param fieldDefinition The field_definition for this field.
-   * @param fieldName The name of the current field
-   */
-  function createChecks(fieldDefinition, fieldName) {
-    const fieldType = getFieldType(fieldDefinition);
+/**
+ * Creates the field splitter for a field, if this field is a multi field
+ * @param fieldDefinition The field_definition for this field.
+ * @param fieldName The name of the current field
+ */
+function createChecks(fieldDefinition, fieldName) {
+  const fieldType = getFieldType(fieldDefinition);
 
-    let checks;
-    if (fieldType === 'string' || fieldType === 'email') {
-      // first create the string checks
-      checks = createChecksString(fieldDefinition, fieldName);
-    }
-
-    if (fieldType === 'email') {
-      // for email an additional check will be added
-      checks.push(createCheckEmail(fieldDefinition, fieldName));
-    }
-
-    // This must be the last one, because the email check will delete the value from the content
-    if (fieldType === 'string' || fieldType === 'email') {
-      const defaultValueCheck = createCheckDefaultValue(fieldDefinition, fieldName);
-      if (defaultValueCheck !== undefined) {
-        checks.push(defaultValueCheck);
-      }
-    }
-    return checks;
+  let checks;
+  if (fieldType === 'string' || fieldType === 'email') {
+    // first create the string checks
+    checks = createChecksString(fieldDefinition, fieldName);
   }
 
+  if (fieldType === 'email') {
+    // for email an additional check will be added
+    checks.push(createCheckEmail(fieldDefinition, fieldName));
+  }
+
+  // This must be the last one, because the email check will delete the value from the content
+  if (fieldType === 'string' || fieldType === 'email') {
+    const defaultValueCheck = createCheckDefaultValue(fieldDefinition, fieldName);
+    if (defaultValueCheck !== undefined) {
+      checks.push(defaultValueCheck);
+    }
+  }
+  return checks;
+}
 
 /**
  * Checks if a given string looks like a valid email.
@@ -52,7 +57,6 @@ function createCheckEmail(fieldDefinition, fieldName) {
   };
 
   return getParserCheck(errorInfo, getEmailIfValid, fieldName, undefined);
-
 }
 
 /**
@@ -87,7 +91,6 @@ function createCheckDefaultValue(fieldDefinition, fieldName) {
   };
 }
 
-
 /**
  * Checks a given string value.
  * Checks the length and if it matches a given regular expression
@@ -98,18 +101,18 @@ function createCheckDefaultValue(fieldDefinition, fieldName) {
 function createChecksString(fieldDefinition, fieldName) {
   let checks = [];
 
-  const fieldCase = propertyHelper.getProperty(fieldDefinition, 'fieldCase');
-  const minLength = propertyHelper.getProperty(fieldDefinition, 'minLength');
-  const maxLength = propertyHelper.getProperty(fieldDefinition, 'maxLength');
-  const regExStr = propertyHelper.getProperty(fieldDefinition, 'regEx');
+  const fieldCase = getProperty(fieldDefinition, 'fieldCase');
+  const minLength = getProperty(fieldDefinition, 'minLength');
+  const maxLength = getProperty(fieldDefinition, 'maxLength');
+  const regExStr = getProperty(fieldDefinition, 'regEx');
   let regEx;
   if (regExStr) {
     regEx = new RegExp(regExStr);
   }
 
-  const minLengthSeverity = propertyHelper.getSeverity(fieldDefinition, 'minLength');
-  const maxLengthSeverity = propertyHelper.getSeverity(fieldDefinition, 'maxLength');
-  const regExSeverity = propertyHelper.getSeverity(fieldDefinition, 'regEx');
+  const minLengthSeverity = getSeverity(fieldDefinition, 'minLength');
+  const maxLengthSeverity = getSeverity(fieldDefinition, 'maxLength');
+  const regExSeverity = getSeverity(fieldDefinition, 'regEx');
 
   // -----------------------------------------------------------------------
   // Create FIELD CASE Check
@@ -148,7 +151,6 @@ function createChecksString(fieldDefinition, fieldName) {
       }
     });
   }
-
 
   // -----------------------------------------------------------------------
   // Create MIN LENGTH Check
@@ -316,7 +318,6 @@ function createChecksString(fieldDefinition, fieldName) {
 const emailRegex =
   /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
 
-
 /*
  * Checks if a given email address is syntactically valid.
  * @param emailToVerify the email address to verify
@@ -334,8 +335,6 @@ function getEmailIfValid(emailToVerify) {
   }
 }
 
-
 export {
-	createChecks
+  createChecks
 };
-

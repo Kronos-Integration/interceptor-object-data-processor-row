@@ -58,7 +58,6 @@ function createSplitterForField(multiFieldDefinitionPart, fieldName) {
 		removeEmpty = multiFieldDefinitionPart.removeEmpty;
 	}
 
-
 	return function (content) {
 		if (content.hasOwnProperty(fieldName)) {
 			// the field exists in the content record
@@ -89,7 +88,6 @@ function createSplitterForField(multiFieldDefinitionPart, fieldName) {
 						values[i] = values[i].replace(re, delimiter);
 					}
 				}
-
 
 				// ------------------------------------------------
 				// remove the leading and trailing whiteSpaces

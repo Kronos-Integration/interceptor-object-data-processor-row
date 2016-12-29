@@ -70,7 +70,7 @@ function getParserCheck(errorInfo, parseFunction, fieldName, defaultValue) {
 			}
 		};
 	}
-	
+
 export {
 	getParserCheck
 };

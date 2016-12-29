@@ -1,25 +1,28 @@
 /* jslint node: true, esnext: true */
 'use strict';
 
-import { getParserCheck } from '../util/function-helper';
-import { getFieldType, getSeverity } from '../util/property-helper';
+import {
+	getParserCheck
+}
+from '../util/function-helper';
+import {
+	getFieldType, getSeverity
+}
+from '../util/property-helper';
 
+/**
+ * Creates the checks for checking boolean values
+ * @param fieldDefinition The field_definition for this field.
+ * @param fieldName The name of the current field
+ */
+function createChecks(fieldDefinition, fieldName) {
+	const fieldType = getFieldType(fieldDefinition);
 
-	/**
-	 * Creates the checks for checking boolean values
-	 * @param fieldDefinition The field_definition for this field.
-	 * @param fieldName The name of the current field
-	 */
-	function createChecks(fieldDefinition, fieldName) {
-		const fieldType = getFieldType(fieldDefinition);
-
-		if (fieldType === 'boolean') {
-			// it is a boolean field. Create the cehcks
-			return _createChecks(fieldDefinition, fieldName);
-		}
+	if (fieldType === 'boolean') {
+		// it is a boolean field. Create the cehcks
+		return _createChecks(fieldDefinition, fieldName);
 	}
-
-
+}
 
 /**
  * Create a function which
@@ -53,7 +56,6 @@ function _createChecks(fieldDefinition, fieldName) {
 
 	return getParserCheck(errorInfo, stringToBoolean, fieldName, defaultValue);
 }
-
 
 /*
  * Convert a value to a boolean value by comparing the upper case version

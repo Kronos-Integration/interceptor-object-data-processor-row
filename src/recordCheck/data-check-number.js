@@ -1,25 +1,26 @@
 /* jslint node: true, esnext: true */
 'use strict';
 
-import { getFieldType, getSeverity } from '../util/property-helper';
+import {
+  getFieldType, getSeverity, getProperty
+}
+from '../util/property-helper';
 
-  /**
-   * Creates the field splitter for a field, if this field is a multi field
-   * @param fieldDefinition The field_definition for this field.
-   * @param fieldName The name of the current field
-   */
+/**
+ * Creates the field splitter for a field, if this field is a multi field
+ * @param fieldDefinition The field_definition for this field.
+ * @param fieldName The name of the current field
+ */
 function createChecks(fieldDefinition, fieldName) {
-    const fieldType = getFieldType(fieldDefinition);
+  const fieldType = getFieldType(fieldDefinition);
 
-    let checks;
-    if (fieldType === 'number' || fieldType === 'integer' || fieldType === 'float') {
-      checks = createChecks(fieldDefinition, fieldName, fieldType);
-    }
-
-    return checks;
+  let checks;
+  if (fieldType === 'number' || fieldType === 'integer' || fieldType === 'float') {
+    checks = createChecks(fieldDefinition, fieldName, fieldType);
   }
 
-
+  return checks;
+}
 
 /**
  * Checks a given string value.
@@ -48,7 +49,6 @@ function createChecks(fieldDefinition, fieldName, numberType) {
       message: 'The defaultValue in the fieldDefinition is not a valid number in the given format.'
     };
   }
-
 
   /** ************************************************************************
    * Checks that the given value is a valid number in the right type (number, integer, float)
@@ -178,7 +178,6 @@ function createChecks(fieldDefinition, fieldName, numberType) {
     });
   }
 
-
   // -----------------------------------------------------------------------
   // Create MAX Check
   // we need a further check to check the number against the max value
@@ -244,8 +243,6 @@ function createChecks(fieldDefinition, fieldName, numberType) {
   return checks;
 }
 
-
-
 /**
  * Parses a string and try to convert it in a valid number.
  * If the string does not match a valid number it will return the error message, else the parsed number.
@@ -305,8 +302,6 @@ function parseNumberString(numberString, type, decimalSeparator) {
   return result;
 }
 
-
 export {
-	createChecks
+  createChecks
 };
-
