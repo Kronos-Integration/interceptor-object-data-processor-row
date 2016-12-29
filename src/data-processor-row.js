@@ -14,12 +14,17 @@ const schema = require('../schema/row_processor_definition.json');
 validator.setRemoteReference('field_definition#', require('../schema/field_definition.json'));
 
 
-const fieldSplitter = require('./converter/data-field-splitter.js');
 const checkBoolean = require('./recordCheck/data-check-boolean.js');
 const checkCommon = require('./recordCheck/data-check-common.js');
 const checkDate = require('./recordCheck/data-check-date.js');
 const checkNumber = require('./recordCheck/data-check-number.js');
 const checkStringEmail = require('./recordCheck/data-check-string-email.js');
+
+
+import {
+	createChecks as fieldSplitter
+}
+from './converter/data-field-splitter';
 
 class DataProcessorRow extends stream.Transform {
 
@@ -144,6 +149,10 @@ function getCheckInfo(checkProperty, fieldName) {
 	};
 }
 
-module.exports = function (opts, validate) {
+function DataProcessorRowFactory(opts, validate) {
 	return new DataProcessorRow(opts, validate);
+}
+
+export {
+	DataProcessorRowFactory
 };

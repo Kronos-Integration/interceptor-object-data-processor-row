@@ -6,8 +6,7 @@ const should = require('chai').should();
 const _ = require('underscore');
 
 const moment = require('moment');
-const checkDateFactory = require('../lib/recordCheck/data-check-date').createChecks;
-
+const checkDateFactory = require('../src/recordCheck/data-check-date').createChecks;
 
 
 const fieldDefinition = {

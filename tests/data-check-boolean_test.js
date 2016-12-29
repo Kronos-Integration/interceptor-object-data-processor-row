@@ -9,7 +9,7 @@ const should = chai.should();
 
 const _ = require('underscore');
 
-const checkBooleanFactory = require('../lib/recordCheck/data-check-boolean').createChecks;
+const checkBooleanFactory = require('../src/recordCheck/data-check-boolean').createChecks;
 
 
 const fieldDefinition = {

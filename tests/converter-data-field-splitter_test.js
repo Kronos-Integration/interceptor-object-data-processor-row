@@ -5,7 +5,7 @@
 const should = require('chai').should();
 const _ = require('underscore');
 
-const fieldSplitterFactory = require('../lib/converter/data-field-splitter').createChecks;
+const fieldSplitterFactory = require('../dist/module').createChecks;
 
 
 const checkProperty = {

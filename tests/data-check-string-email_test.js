@@ -5,7 +5,7 @@
 const _ = require('underscore');
 const should = require('chai').should();
 
-const checkStringEmailFactory = require('../lib/recordCheck/data-check-string-email').createChecks;
+const checkStringEmailFactory = require('../src/recordCheck/data-check-string-email').createChecks;
 
 
 // The cont to be checked by the file check
