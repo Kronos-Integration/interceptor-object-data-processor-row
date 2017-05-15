@@ -28,7 +28,7 @@
     "istanbul": "0.4.5",
     "jsdoc": "^3.4.3",
     "kronos-test-interceptor": "^2.1.0",
-    "mocha": "3.3.0",
+    "mocha": "3.4.0",
     "semantic-release": "^6.3.6",
     "underscore": "^1.8.3"
   },
