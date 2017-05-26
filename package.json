@@ -23,7 +23,7 @@
     "z-schema": "3.18.2"
   },
   "devDependencies": {
-    "chai": "3.5.0",
+    "chai": "4.0.0",
     "cz-conventional-changelog": "2.0.0",
     "istanbul": "0.4.5",
     "jsdoc": "^3.4.3",
