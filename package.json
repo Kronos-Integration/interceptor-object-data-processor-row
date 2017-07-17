@@ -2,7 +2,8 @@
   "name": "kronos-interceptor-object-data-processor-row",
   "version": "0.0.0-semantic-release",
   "description": "Splits a line by a sparator into tokens.",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "lib/index.js",
   "scripts": {
     "cover": "nyc npm test",
     "doc": "./node_modules/.bin/jsdoc lib/*.js",
@@ -11,7 +12,7 @@
     "precover": "npm run prepublish",
     "pretest": "npm run prepublish",
     "posttest": "markdown-doctest",
-    "prepublish": "rollup --output=index.js -c -- {{module}}",
+    "prepublish": "rollup --output=dist/index.js -c -- lib/index.js",
     "docs": "jsdoc2md -l off -t doc/README.hbs -f src/*.js >README.md"
   },
   "repository": {
@@ -52,19 +53,10 @@
   "engines": {
     "node": ">=8.1.4"
   },
-  "keywords": [
-    "stream",
-    "line",
-    "parser",
-    "kronos-interceptor"
-  ],
+  "keywords": ["stream", "line", "parser", "kronos-interceptor"],
   "nyc": {
-    "include": [
-      "dist/**/*.js"
-    ],
-    "reporter": [
-      "lcov"
-    ],
+    "include": ["dist/**/*.js"],
+    "reporter": ["lcov"],
     "report-dir": "./coverage"
   },
   "template": {
