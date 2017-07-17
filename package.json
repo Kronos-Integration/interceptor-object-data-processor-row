@@ -4,10 +4,15 @@
   "description": "Splits a line by a sparator into tokens.",
   "main": "index.js",
   "scripts": {
-    "cover": "./node_modules/istanbul/lib/cli.js cover --hook-run-in-context ./node_modules/mocha/bin/_mocha -- --R spec --U exports tests/*_test.js",
+    "cover": "nyc npm test",
     "doc": "./node_modules/.bin/jsdoc lib/*.js",
-    "test": "./node_modules/.bin/mocha tests/*_test.js",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "test": "mocha tests/*_test.js",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "precover": "npm run prepublish",
+    "pretest": "npm run prepublish",
+    "posttest": "markdown-doctest",
+    "prepublish": "rollup --output=index.js -c -- {{module}}",
+    "docs": "jsdoc2md -l off -t doc/README.hbs -f src/*.js >README.md"
   },
   "repository": {
     "type": "git",
@@ -23,14 +28,15 @@
     "z-schema": "3.18.2"
   },
   "devDependencies": {
-    "chai": "4.1.0",
-    "cz-conventional-changelog": "2.0.0",
-    "istanbul": "0.4.5",
-    "jsdoc": "^3.5.3",
+    "chai": "^4.1.0",
     "kronos-test-interceptor": "^2.1.0",
-    "mocha": "3.4.2",
+    "mocha": "^3.4.2",
     "semantic-release": "^6.3.6",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "jsdoc-to-markdown": "^3.0.0",
+    "markdown-doctest": "^0.9.1",
+    "nyc": "^11.0.3",
+    "rollup": "^0.45.2"
   },
   "contributors": [
     {
@@ -44,7 +50,7 @@
   ],
   "license": "BSD-2-Clause",
   "engines": {
-    "node": ">=6.9.1"
+    "node": ">=8.1.4"
   },
   "keywords": [
     "stream",
@@ -52,9 +58,18 @@
     "parser",
     "kronos-interceptor"
   ],
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
+  "nyc": {
+    "include": [
+      "dist/**/*.js"
+    ],
+    "reporter": [
+      "lcov"
+    ],
+    "report-dir": "./coverage"
+  },
+  "template": {
+    "repository": {
+      "url": "https://github.com/Kronos-Tools/npm-package-template.git"
     }
   }
 }
