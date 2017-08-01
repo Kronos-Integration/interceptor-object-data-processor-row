@@ -1,7 +1,5 @@
-/* jslint node: true, esnext: true */
-'use strict';
-
 export default {
   format: 'cjs',
-  plugins: []
+  plugins: [],
+  external: ['kronos-interceptor', 'data-processor-row']
 };
