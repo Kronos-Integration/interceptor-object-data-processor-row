@@ -30,14 +30,14 @@
   },
   "devDependencies": {
     "chai": "^4.1.0",
-    "kronos-test-interceptor": "^2.1.0",
-    "mocha": "^3.4.2",
-    "semantic-release": "^6.3.6",
-    "underscore": "^1.8.3",
     "jsdoc-to-markdown": "^3.0.0",
+    "kronos-test-interceptor": "^2.1.0",
     "markdown-doctest": "^0.9.1",
+    "mocha": "^3.4.2",
     "nyc": "^11.0.3",
-    "rollup": "^0.45.2"
+    "rollup": "^0.47.6",
+    "semantic-release": "^7.0.2",
+    "underscore": "^1.8.3"
   },
   "contributors": [
     {
