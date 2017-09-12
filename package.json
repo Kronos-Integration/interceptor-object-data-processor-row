@@ -6,7 +6,7 @@
   "scripts": {
     "cover": "./node_modules/istanbul/lib/cli.js cover --hook-run-in-context ./node_modules/mocha/bin/_mocha -- --R spec --U exports tests/*_test.js",
     "doc": "./node_modules/.bin/jsdoc lib/*.js",
-    "test": "./node_modules/.bin/mocha tests/*_test.js",
+    "test": "./node_modules/.bin/mocha tests/*-test.js",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
@@ -46,12 +46,7 @@
   "engines": {
     "node": ">=8.4.0"
   },
-  "keywords": [
-    "stream",
-    "line",
-    "parser",
-    "kronos-interceptor"
-  ],
+  "keywords": ["stream", "line", "parser", "kronos-interceptor"],
   "xo": {
     "space": true
   },
