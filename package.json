@@ -4,7 +4,7 @@
   "description": "Splits a line by a sparator into tokens.",
   "main": "index.js",
   "scripts": {
-    "cover": "./node_modules/istanbul/lib/cli.js cover --hook-run-in-context ./node_modules/mocha/bin/_mocha -- --R spec --U exports tests/*_test.js",
+    "cover": "./node_modules/istanbul/lib/cli.js cover --hook-run-in-context ./node_modules/mocha/bin/_mocha -- --R spec --U exports tests/*-test.js",
     "doc": "./node_modules/.bin/jsdoc lib/*.js",
     "test": "./node_modules/.bin/mocha tests/*-test.js",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
