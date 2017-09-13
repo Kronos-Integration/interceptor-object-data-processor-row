@@ -44,9 +44,14 @@
   ],
   "license": "BSD-2-Clause",
   "engines": {
-    "node": ">=8.4.0"
+    "node": ">=8.5.0"
   },
-  "keywords": ["stream", "line", "parser", "kronos-interceptor"],
+  "keywords": [
+    "stream",
+    "line",
+    "parser",
+    "kronos-interceptor"
+  ],
   "xo": {
     "space": true
   },
