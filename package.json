@@ -19,7 +19,7 @@
   "homepage": "https://github.com/Kronos-Integration/kronos-interceptor-object-data-processor-row#readme",
   "dependencies": {
     "kronos-interceptor": "^2.4.16",
-    "moment": "^2.18.1",
+    "moment": "^2.19.0",
     "z-schema": "3.18.4"
   },
   "devDependencies": {
