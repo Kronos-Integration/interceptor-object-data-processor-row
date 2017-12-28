@@ -1,22 +1,31 @@
 {
   "name": "kronos-interceptor-object-data-processor-row",
   "version": "0.0.0-semantic-release",
-  "description": "Splits a line by a sparator into tokens.",
   "main": "index.js",
+  "description": "Splits a line by a sparator into tokens.",
+  "keywords": [
+    "stream",
+    "line",
+    "parser",
+    "kronos-interceptor"
+  ],
+  "contributors": [
+    {
+      "name": "Torsten Link",
+      "email": "torstenlink@gmx.de"
+    },
+    {
+      "name": "Markus Felten",
+      "email": "markus.felten@gmx.de"
+    }
+  ],
+  "license": "BSD-2-Clause",
   "scripts": {
     "cover": "./node_modules/istanbul/lib/cli.js cover --hook-run-in-context ./node_modules/mocha/bin/_mocha -- --R spec --U exports tests/*-test.js",
     "doc": "./node_modules/.bin/jsdoc lib/*.js",
     "test": "./node_modules/.bin/mocha tests/*-test.js",
     "semantic-release": "semantic-release"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Kronos-Integration/kronos-interceptor-object-data-processor-row.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Kronos-Integration/kronos-interceptor-object-data-processor-row/issues"
-  },
-  "homepage": "https://github.com/Kronos-Integration/kronos-interceptor-object-data-processor-row#readme",
   "dependencies": {
     "kronos-interceptor": "^2.5.2",
     "moment": "^2.20.1",
@@ -32,26 +41,17 @@
     "semantic-release": "^11.1.0",
     "underscore": "^1.8.3"
   },
-  "contributors": [
-    {
-      "name": "Torsten Link",
-      "email": "torstenlink@gmx.de"
-    },
-    {
-      "name": "Markus Felten",
-      "email": "markus.felten@gmx.de"
-    }
-  ],
-  "license": "BSD-2-Clause",
   "engines": {
     "node": ">=8.9.3"
   },
-  "keywords": [
-    "stream",
-    "line",
-    "parser",
-    "kronos-interceptor"
-  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kronos-Integration/kronos-interceptor-object-data-processor-row.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Kronos-Integration/kronos-interceptor-object-data-processor-row/issues"
+  },
+  "homepage": "https://github.com/Kronos-Integration/kronos-interceptor-object-data-processor-row#readme",
   "xo": {
     "space": true
   },
