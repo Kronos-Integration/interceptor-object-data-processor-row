@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "kronos-interceptor": "^2.5.2",
-    "moment": "^2.22.0",
+    "moment": "^2.22.1",
     "z-schema": "3.19.1"
   },
   "devDependencies": {
