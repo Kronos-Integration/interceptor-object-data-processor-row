@@ -27,7 +27,7 @@
     "semantic-release": "semantic-release"
   },
   "dependencies": {
-    "kronos-interceptor": "^2.5.2",
+    "kronos-interceptor": "^2.6.0",
     "moment": "^2.22.2",
     "z-schema": "3.22.0"
   },
