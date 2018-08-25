@@ -38,11 +38,11 @@
     "jsdoc": "^3.5.5",
     "kronos-test-interceptor": "^3.0.0",
     "mocha": "^5.2.0",
-    "semantic-release": "^15.9.3",
+    "semantic-release": "^15.9.9",
     "underscore": "^1.9.1"
   },
   "engines": {
-    "node": ">=10.6"
+    "node": ">=8.11.4"
   },
   "repository": {
     "type": "git",
