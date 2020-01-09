@@ -38,7 +38,7 @@
     "jsdoc": "^3.6.3",
     "kronos-test-interceptor": "^3.0.0",
     "mocha": "^6.2.2",
-    "semantic-release": "^15.13.31",
+    "semantic-release": "^16.0.0",
     "underscore": "^1.9.1"
   },
   "engines": {
