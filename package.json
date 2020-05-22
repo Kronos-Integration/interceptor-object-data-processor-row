@@ -1,7 +1,7 @@
 {
-  "name": "kronos-interceptor-object-data-processor-row",
+  "name": "@kronos-integration/interceptor-object-data-processor-row",
   "version": "0.0.0-semantic-release",
-  "main": "index.js",
+  "main": "./index.mjs",
   "description": "Splits a line by a sparator into tokens.",
   "keywords": [
     "stream",
@@ -21,24 +21,13 @@
   ],
   "license": "BSD-2-Clause",
   "scripts": {
-    "cover": "./node_modules/istanbul/lib/cli.js cover --hook-run-in-context ./node_modules/mocha/bin/_mocha -- --R spec --U exports tests/*-test.js",
-    "doc": "./node_modules/.bin/jsdoc lib/*.js",
-    "semantic-release": "semantic-release",
-    "test": "./node_modules/.bin/mocha tests/*-test.js"
   },
   "dependencies": {
-    "kronos-interceptor": "^2.6.0",
+    "@kronos-integration/interceptor": "^2.6.0",
     "moment": "^2.22.2",
     "z-schema": "3.26.0"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
-    "cz-conventional-changelog": "3.1.0",
-    "istanbul": "0.4.5",
-    "jsdoc": "^3.6.3",
-    "kronos-test-interceptor": "^3.0.0",
-    "mocha": "^7.0.1",
-    "semantic-release": "^15.13.31",
     "underscore": "^1.9.1"
   },
   "engines": {
@@ -52,12 +41,8 @@
     "url": "https://github.com/Kronos-Integration/kronos-interceptor-object-data-processor-row/issues"
   },
   "homepage": "https://github.com/Kronos-Integration/kronos-interceptor-object-data-processor-row#readme",
-  "xo": {
-    "space": true
-  },
   "template": {
     "repository": {
-      "url": "https://github.com/Kronos-Tools/npm-package-template-minimal.git"
     }
   }
 }
