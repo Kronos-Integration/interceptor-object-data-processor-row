@@ -1,7 +1,3 @@
-/*global describe, it*/
-/* jslint node: true, esnext: true */
-'use strict';
-
 const functionHelper = require('../util/function-helper');
 const propertyHelper = require('../util/property-helper');
 

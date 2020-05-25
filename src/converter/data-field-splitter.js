@@ -1,6 +1,3 @@
-/* jslint node: true, esnext: true */
-'use strict';
-
 var TMP_DEVIDER = '<--DIVIDER-->';
 
 module.exports = {

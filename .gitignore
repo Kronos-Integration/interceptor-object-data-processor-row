@@ -7,5 +7,4 @@ build
 .test
 .tmp
 npm-debug.log
-gumbo.js
 
