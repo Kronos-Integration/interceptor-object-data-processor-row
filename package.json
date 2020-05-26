@@ -5,8 +5,7 @@
   "type": "module",
   "main": "./src/interceptor.mjs",
   "exports": {
-    ".": "./src/interceptor.mjs",
-    "./": "./"
+    ".": "./src/interceptor.mjs"
   },
   "description": "Splits a line by a sparator into tokens.",
   "keywords": [
