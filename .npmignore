@@ -8,4 +8,5 @@ doc
 .travis.yml
 .vscode
 rollup.config.js
+.github
 
