@@ -1,6 +1,9 @@
 {
   "name": "@kronos-integration/interceptor-object-data-processor-row",
   "version": "0.0.0-semantic-release",
+  "publishConfig": {
+    "access": "public"
+  },
   "sideEffects": false,
   "type": "module",
   "main": "./src/interceptor.mjs",
@@ -28,11 +31,12 @@
   "scripts": {
     "test": "ava --timeout 2m",
     "cover": "c8 -x 'tests/**/*' --temp-directory build/tmp ava --timeout 2m && c8 report -r lcov -o build/coverage --temp-directory build/tmp",
-    "docs": "documentation readme ./src/interceptor.mjs --section=API",
-    "lint": "documentation lint ./src/interceptor.mjs"
+    "docs": "documentation readme ./src/line-header-intercetor.mjs --section=API && documentation readme ./src/interceptor.mjs --section=API && documentation readme ./src/module.mjs --section=API && documentation readme ./src/message-handler-interceptor.mjs --section=API",
+    "lint": "documentation lint ./src/line-header-intercetor.mjs && documentation lint ./src/interceptor.mjs && documentation lint ./src/module.mjs && documentation lint ./src/message-handler-interceptor.mjs"
   },
   "dependencies": {
     "@kronos-integration/interceptor": "^10.0.1",
+    "@kronos-integration/message": "^2.2.0",
     "moment": "^2.22.2",
     "z-schema": "4.2.3"
   },
@@ -40,8 +44,10 @@
     "ava": "^3.12.1",
     "c8": "^7.3.0",
     "documentation": "^13.0.2",
+    "esm": "^3.2.25",
+    "loglevel-mixin": "^5.0.3",
     "semantic-release": "^17.1.1",
-    "underscore": "^1.9.1"
+    "underscore": "1.11.0"
   },
   "engines": {
     "node": ">=14.9.0"
