@@ -37,7 +37,7 @@
   "dependencies": {
     "@kronos-integration/interceptor": "^10.2.21",
     "moment": "^2.29.2",
-    "z-schema": "5.0.2"
+    "z-schema": "5.0.3"
   },
   "devDependencies": {
     "ava": "^4.2.0",
