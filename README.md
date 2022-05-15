@@ -34,38 +34,38 @@
     *   [Parameters](#parameters-7)
 *   [createChecks](#createchecks-3)
     *   [Parameters](#parameters-8)
-*   [getProperty](#getproperty)
-    *   [Parameters](#parameters-9)
-*   [getSeverity](#getseverity)
-    *   [Parameters](#parameters-10)
-*   [getFieldType](#getfieldtype)
-    *   [Parameters](#parameters-11)
 *   [createChecks](#createchecks-4)
-    *   [Parameters](#parameters-12)
+    *   [Parameters](#parameters-9)
 *   [content](#content)
-    *   [Parameters](#parameters-13)
+    *   [Parameters](#parameters-10)
 *   [createChecks](#createchecks-5)
-    *   [Parameters](#parameters-14)
+    *   [Parameters](#parameters-11)
 *   [createDateChecks](#createdatechecks)
-    *   [Parameters](#parameters-15)
+    *   [Parameters](#parameters-12)
 *   [errorInfo](#errorinfo)
-    *   [Parameters](#parameters-16)
+    *   [Parameters](#parameters-13)
 *   [push](#push)
-    *   [Parameters](#parameters-17)
+    *   [Parameters](#parameters-14)
 *   [push](#push-1)
-    *   [Parameters](#parameters-18)
+    *   [Parameters](#parameters-15)
 *   [push](#push-2)
-    *   [Parameters](#parameters-19)
+    *   [Parameters](#parameters-16)
 *   [push](#push-3)
-    *   [Parameters](#parameters-20)
+    *   [Parameters](#parameters-17)
 *   [push](#push-4)
-    *   [Parameters](#parameters-21)
+    *   [Parameters](#parameters-18)
 *   [push](#push-5)
 *   [push](#push-6)
-    *   [Parameters](#parameters-22)
+    *   [Parameters](#parameters-19)
 *   [push](#push-7)
-    *   [Parameters](#parameters-23)
+    *   [Parameters](#parameters-20)
 *   [push](#push-8)
+    *   [Parameters](#parameters-21)
+*   [getProperty](#getproperty)
+    *   [Parameters](#parameters-22)
+*   [getSeverity](#getseverity)
+    *   [Parameters](#parameters-23)
+*   [getFieldType](#getfieldtype)
     *   [Parameters](#parameters-24)
 *   [createChecks](#createchecks-6)
     *   [Parameters](#parameters-25)
@@ -175,39 +175,6 @@ Checks the length and if it matches a given regular expression
 *   `numberType`  The type of the field (number, integer, float)
 
 Returns **any** checks A list of checks to be perfomred
-
-## getProperty
-
-Some of the values may be directly the value or could be an object with different
-addidtional properties. So to get the expected value it must be checked if the
-property is an object or not. If it is an object the real value is stored in the
-object under the property 'val'. See the json fieldDefinition.
-
-### Parameters
-
-*   `fieldDefinition`  The field_definition
-*   `fieldTypePropertyName`  The name of the property. This property is under the fieldType
-*   `propertyName`  The name of the property. This property is a sibling of fieldTypeOnly one of the property names should be given
-
-## getSeverity
-
-Returns the severity for a check property. The severity may be defined globaly
-for the complete field, but also may be defined on a per check basis
-
-### Parameters
-
-*   `fieldDefinition`  The field_definition
-*   `fieldTypePropertyName`  The name of the property. This property is under the fieldType
-*   `propertyName`  The name of the property. This property is a sibling of fieldTypeOnly one of the property names should be given
-
-## getFieldType
-
-Returns the severity for a check property. The severity may be defined globaly
-for the complete field, but also may be defined on a per check basis
-
-### Parameters
-
-*   `fieldDefinition`  The field_definition
 
 ## createChecks
 
@@ -350,6 +317,39 @@ Checks that the given string has a minimum length
 *   `content`  the content hash to be validated.
 
 Returns **any** error an error object if the given value is not a valid date
+
+## getProperty
+
+Some of the values may be directly the value or could be an object with different
+addidtional properties. So to get the expected value it must be checked if the
+property is an object or not. If it is an object the real value is stored in the
+object under the property 'val'. See the json fieldDefinition.
+
+### Parameters
+
+*   `fieldDefinition`  The field_definition
+*   `fieldTypePropertyName`  The name of the property. This property is under the fieldType
+*   `propertyName`  The name of the property. This property is a sibling of fieldTypeOnly one of the property names should be given
+
+## getSeverity
+
+Returns the severity for a check property. The severity may be defined globaly
+for the complete field, but also may be defined on a per check basis
+
+### Parameters
+
+*   `fieldDefinition`  The field_definition
+*   `fieldTypePropertyName`  The name of the property. This property is under the fieldType
+*   `propertyName`  The name of the property. This property is a sibling of fieldTypeOnly one of the property names should be given
+
+## getFieldType
+
+Returns the severity for a check property. The severity may be defined globaly
+for the complete field, but also may be defined on a per check basis
+
+### Parameters
+
+*   `fieldDefinition`  The field_definition
 
 ## createChecks
 
