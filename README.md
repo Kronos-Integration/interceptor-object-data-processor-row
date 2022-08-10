@@ -34,15 +34,15 @@
     *   [Parameters](#parameters-7)
 *   [createChecks](#createchecks-3)
     *   [Parameters](#parameters-8)
-*   [createChecks](#createchecks-4)
-    *   [Parameters](#parameters-9)
-*   [content](#content)
-    *   [Parameters](#parameters-10)
 *   [getProperty](#getproperty)
-    *   [Parameters](#parameters-11)
+    *   [Parameters](#parameters-9)
 *   [getSeverity](#getseverity)
-    *   [Parameters](#parameters-12)
+    *   [Parameters](#parameters-10)
 *   [getFieldType](#getfieldtype)
+    *   [Parameters](#parameters-11)
+*   [createChecks](#createchecks-4)
+    *   [Parameters](#parameters-12)
+*   [content](#content)
     *   [Parameters](#parameters-13)
 *   [createChecks](#createchecks-5)
     *   [Parameters](#parameters-14)
@@ -176,23 +176,6 @@ Checks the length and if it matches a given regular expression
 
 Returns **any** checks A list of checks to be perfomred
 
-## createChecks
-
-Creates the checks which are common to each file type
-
-### Parameters
-
-*   `fieldDefinition`  The field_definition for this field.
-*   `fieldName`  The name of the current field
-
-## content
-
-Just check if for mandatory fields the value is given
-
-### Parameters
-
-*   `content`  the content hash to be validated.
-
 ## getProperty
 
 Some of the values may be directly the value or could be an object with different
@@ -225,6 +208,23 @@ for the complete field, but also may be defined on a per check basis
 ### Parameters
 
 *   `fieldDefinition`  The field_definition
+
+## createChecks
+
+Creates the checks which are common to each file type
+
+### Parameters
+
+*   `fieldDefinition`  The field_definition for this field.
+*   `fieldName`  The name of the current field
+
+## content
+
+Just check if for mandatory fields the value is given
+
+### Parameters
+
+*   `content`  the content hash to be validated.
 
 ## createChecks
 
