@@ -20,7 +20,7 @@
     *   [Parameters](#parameters)
 *   [addChecks](#addchecks)
     *   [Parameters](#parameters-1)
-*   [\_transform](#\_transform)
+*   [\_transform](#_transform)
     *   [Parameters](#parameters-2)
 *   [getCheckInfo](#getcheckinfo)
     *   [Parameters](#parameters-3)
@@ -90,8 +90,8 @@ This module will turn an array of tokens into an object.
 
 ### Parameters
 
-*   `opts`  
-*   `validate`  
+*   `opts` &#x20;
+*   `validate` &#x20;
 
 ## addChecks
 
@@ -99,7 +99,7 @@ Add checks to the array of checks to be executed
 
 ### Parameters
 
-*   `checks`  
+*   `checks` &#x20;
 
 ## \_transform
 
@@ -107,9 +107,9 @@ Reads the stream data and split it into lines.
 
 ### Parameters
 
-*   `data`  
-*   `enc`  
-*   `cb`  
+*   `data` &#x20;
+*   `enc` &#x20;
+*   `cb` &#x20;
 
 ## getCheckInfo
 
@@ -128,7 +128,7 @@ Creates the field splitter for a field, if this field is a multi field
 
 ### Parameters
 
-*   `fieldDefinition`  The field_definition schema
+*   `fieldDefinition`  The field\_definition schema
 *   `fieldName`  The name of the current field
 
 ## createSplitterForField
@@ -147,7 +147,7 @@ Creates the checks for checking boolean values
 
 ### Parameters
 
-*   `fieldDefinition`  The field_definition for this field.
+*   `fieldDefinition`  The field\_definition for this field.
 *   `fieldName`  The name of the current field
 
 ## createChecks
@@ -160,7 +160,7 @@ this field will be stored in the content hash instead.
 
 ### Parameters
 
-*   `fieldDefinition`  The field_definition for this field.
+*   `fieldDefinition`  The field\_definition for this field.
 *   `fieldName`  The name of the current field
 
 ## createChecks
@@ -170,7 +170,7 @@ Checks the length and if it matches a given regular expression
 
 ### Parameters
 
-*   `fieldDefinition`  The field_definition for this field.
+*   `fieldDefinition`  The field\_definition for this field.
 *   `fieldName`  The name of the current field
 *   `numberType`  The type of the field (number, integer, float)
 
@@ -185,7 +185,7 @@ object under the property 'val'. See the json fieldDefinition.
 
 ### Parameters
 
-*   `fieldDefinition`  The field_definition
+*   `fieldDefinition`  The field\_definition
 *   `fieldTypePropertyName`  The name of the property. This property is under the fieldType
 *   `propertyName`  The name of the property. This property is a sibling of fieldTypeOnly one of the property names should be given
 
@@ -196,7 +196,7 @@ for the complete field, but also may be defined on a per check basis
 
 ### Parameters
 
-*   `fieldDefinition`  The field_definition
+*   `fieldDefinition`  The field\_definition
 *   `fieldTypePropertyName`  The name of the property. This property is under the fieldType
 *   `propertyName`  The name of the property. This property is a sibling of fieldTypeOnly one of the property names should be given
 
@@ -207,7 +207,7 @@ for the complete field, but also may be defined on a per check basis
 
 ### Parameters
 
-*   `fieldDefinition`  The field_definition
+*   `fieldDefinition`  The field\_definition
 
 ## createChecks
 
@@ -215,7 +215,7 @@ Creates the checks which are common to each file type
 
 ### Parameters
 
-*   `fieldDefinition`  The field_definition for this field.
+*   `fieldDefinition`  The field\_definition for this field.
 *   `fieldName`  The name of the current field
 
 ## content
@@ -232,7 +232,7 @@ Creates the date checks for a date field
 
 ### Parameters
 
-*   `fieldDefinition`  The field_definition schema
+*   `fieldDefinition`  The field\_definition schema
 *   `fieldName`  The name of the current field
 
 ## createDateChecks
@@ -245,8 +245,8 @@ this field will be stored in the content hash instead.
 
 ### Parameters
 
-*   `fieldDefinition`  
-*   `fieldName`  
+*   `fieldDefinition` &#x20;
+*   `fieldName` &#x20;
 *   `meta`  The meta data hash
 *   `checkProperty`  The properties defines which checks to be created. See the schema for more info
 *   `fieldname`  The name of the field which needs to be checked
@@ -357,7 +357,7 @@ Creates the field splitter for a field, if this field is a multi field
 
 ### Parameters
 
-*   `fieldDefinition`  The field_definition for this field.
+*   `fieldDefinition`  The field\_definition for this field.
 *   `fieldName`  The name of the current field
 
 ## parseNumberString
@@ -377,7 +377,7 @@ Creates the field splitter for a field, if this field is a multi field
 
 ### Parameters
 
-*   `fieldDefinition`  The field_definition for this field.
+*   `fieldDefinition`  The field\_definition for this field.
 *   `fieldName`  The name of the current field
 
 ## createCheckEmail
@@ -386,7 +386,7 @@ Checks if a given string looks like a valid email.
 
 ### Parameters
 
-*   `fieldDefinition`  The field_definition for this field.
+*   `fieldDefinition`  The field\_definition for this field.
 *   `fieldName`  The name of the current field
 
 Returns **any** The check
@@ -397,7 +397,7 @@ Set the default value if no value is there
 
 ### Parameters
 
-*   `fieldDefinition`  The field_definition for this field.
+*   `fieldDefinition`  The field\_definition for this field.
 *   `fieldName`  The name of the current field
 
 Returns **any** checks A list of checks to be perfomred
@@ -409,7 +409,7 @@ Checks the length and if it matches a given regular expression
 
 ### Parameters
 
-*   `fieldDefinition`  The field_definition for this field.
+*   `fieldDefinition`  The field\_definition for this field.
 *   `fieldName`  The name of the current field
 
 Returns **any** checks A list of checks to be perfomred
@@ -423,5 +423,5 @@ It will add the hops and copies the messages
 
 ### Parameters
 
-*   `config`  
-*   `endpoint`  
+*   `config` &#x20;
+*   `endpoint` &#x20;
