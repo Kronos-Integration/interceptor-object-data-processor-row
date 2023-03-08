@@ -47,7 +47,7 @@
     "underscore": "^1.13.6"
   },
   "engines": {
-    "node": ">=18.14.2"
+    "node": ">=18.15.0"
   },
   "repository": {
     "type": "git",
